@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Verbo To Be – Prof. Paulo Bispo | EJA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --green-dark:#1a5c2a;
+  --green:#2a7a3b;
+  --green-mid:#3a9e50;
+  --green-light:#5cc274;
+  --green-pale:#d4f5dc;
+  --gold:#c9a227;
+  --gold-light:#f0cc5a;
+  --white:#ffffff;
+  --off-white:#f5faf6;
+  --gray-light:#e8f3ea;
+  --gray:#8da895;
+  --text-dark:#0f2d18;
+  --shadow:rgba(42,122,59,.22);
+  --radius-lg:18px;
+  --radius-md:12px;
+  --radius-sm:8px;
+  --ease:.24s cubic-bezier(.4,0,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Nunito',sans-serif;background:var(--off-white);color:var(--text-dark);min-height:100vh;overflow-x:hidden;}
+
+/* ── HEADER ── */
+header{background:linear-gradient(135deg,var(--green-dark) 0%,var(--green) 55%,var(--green-mid) 100%);position:relative;overflow:hidden;}
+header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 90% 50%,rgba(201,162,39,.18) 0%,transparent 70%);pointer-events:none;}
+header::after{content:'';position:absolute;width:280px;height:280px;border-radius:50%;border:36px solid rgba(255,255,255,.05);right:-70px;top:-70px;pointer-events:none;}
+.header-inner{position:relative;z-index:1;max-width:800px;margin:0 auto;padding:22px 20px 18px;display:flex;align-items:center;gap:16px;}
+.logo-wrap{flex-shrink:0;width:64px;height:64px;background:rgba(255,255,255,.12);border:2px solid rgba(201,162,39,.55);border-radius:50%;display:flex;align-items:center;justify-content:center;animation:pulse-ring 3s ease-in-out infinite;}
+@keyframes pulse-ring{0%,100%{box-shadow:0 0 0 0 rgba(201,162,39,.4);}50%{box-shadow:0 0 0 10px rgba(201,162,39,0);}}
+.logo-wrap svg{width:40px;height:40px;}
+.header-text{flex:1;}
+.school-name{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--gold-light);text-transform:uppercase;margin-bottom:2px;}
+.prof-name{font-family:'Montserrat',sans-serif;font-size:20px;font-weight:900;color:#fff;line-height:1.1;}
+.prof-name span{color:var(--gold-light);}
+.tagline{font-size:11px;color:rgba(255,255,255,.7);margin-top:3px;font-style:italic;}
+.header-badge{flex-shrink:0;text-align:center;background:rgba(255,255,255,.1);border:1px solid rgba(201,162,39,.4);border-radius:var(--radius-md);padding:8px 12px;}
+.header-badge .flag{font-size:22px;line-height:1;margin-bottom:2px;}
+.header-badge p{font-size:9px;font-weight:700;color:rgba(255,255,255,.8);letter-spacing:.05em;text-transform:uppercase;}
+.gov-strip{background:var(--green-dark);border-top:1px solid rgba(201,162,39,.3);text-align:center;padding:5px 16px;font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--gold-light);text-transform:uppercase;}
+
+/* ── MAIN ── */
+main{max-width:800px;margin:0 auto;padding:24px 16px 60px;position:relative;z-index:1;}
+
+/* ── SCREENS ── */
+.screen{display:none;animation:fadeUp .4s ease both;}
+.screen.active{display:block;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── MASCOT ── */
+.mascot-row{display:flex;align-items:flex-end;gap:14px;margin-bottom:22px;}
+.mascot-wrap{flex-shrink:0;position:relative;}
+.mascot-wrap svg{width:90px;height:110px;filter:drop-shadow(0 4px 12px rgba(42,122,59,.25));}
+.mascot-wrap .mood-badge{position:absolute;bottom:-4px;right:-6px;font-size:18px;animation:bounce-badge 1.4s ease-in-out infinite alternate;}
+@keyframes bounce-badge{from{transform:translateY(0)}to{transform:translateY(-5px)}}
+.speech-bubble{background:var(--white);border:2px solid var(--green-light);border-radius:var(--radius-lg);border-bottom-left-radius:4px;padding:14px 16px;flex:1;position:relative;box-shadow:0 3px 14px var(--shadow);}
+.speech-bubble::before{content:'';position:absolute;left:-14px;bottom:16px;border:7px solid transparent;border-right-color:var(--green-light);}
+.speech-bubble::after{content:'';position:absolute;left:-11px;bottom:17px;border:6px solid transparent;border-right-color:var(--white);}
+.bubble-name{font-size:10px;font-weight:800;color:var(--green-mid);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;}
+.bubble-text{font-size:15px;font-weight:700;color:var(--text-dark);line-height:1.45;}
+
+/* ── WELCOME FORM ── */
+.welcome-card{background:var(--white);border:1px solid var(--gray-light);border-radius:var(--radius-lg);padding:28px 24px;box-shadow:0 3px 18px var(--shadow);}
+.welcome-card h2{font-family:'Montserrat',sans-serif;font-size:20px;font-weight:900;color:var(--green-dark);margin-bottom:6px;}
+.welcome-card p{font-size:14px;color:var(--gray);margin-bottom:22px;}
+.field-label{font-size:13px;font-weight:800;color:var(--green-dark);margin-bottom:7px;display:block;}
+.big-input{width:100%;padding:14px 16px;border:2px solid var(--gray-light);border-radius:var(--radius-md);font-family:'Nunito',sans-serif;font-size:16px;font-weight:700;color:var(--text-dark);background:var(--off-white);transition:border-color var(--ease);outline:none;margin-bottom:18px;}
+.big-input:focus{border-color:var(--green-mid);background:var(--white);}
+.btn-group{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;}
+.sel-btn{flex:1;min-width:80px;padding:12px 8px;border:2px solid var(--gray-light);border-radius:var(--radius-md);background:var(--off-white);font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;color:var(--gray);cursor:pointer;transition:all var(--ease);text-align:center;}
+.sel-btn:hover{border-color:var(--green-mid);color:var(--green);}
+.sel-btn.selected{background:var(--green);color:var(--white);border-color:var(--green);box-shadow:0 4px 14px var(--shadow);}
+.enter-btn{width:100%;padding:16px;background:linear-gradient(135deg,var(--green),var(--green-mid));color:var(--white);border:none;border-radius:var(--radius-md);font-family:'Montserrat',sans-serif;font-size:17px;font-weight:900;cursor:pointer;letter-spacing:.03em;transition:all var(--ease);box-shadow:0 4px 18px var(--shadow);margin-top:4px;}
+.enter-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px var(--shadow);}
+.enter-btn:active{transform:scale(.98);}
+
+/* ── LESSON CARDS ── */
+.lesson-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;}
+.lesson-title{font-family:'Montserrat',sans-serif;font-size:17px;font-weight:900;color:var(--green-dark);}
+.progress-pill{font-size:12px;font-weight:800;color:var(--green);background:var(--green-pale);border-radius:99px;padding:4px 12px;}
+.progress-bar{height:8px;background:var(--gray-light);border-radius:99px;overflow:hidden;margin-bottom:20px;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--green-mid),var(--green-light));border-radius:99px;transition:width .4s cubic-bezier(.4,0,.2,1);}
+
+/* phrase cards */
+.phrase-card{background:var(--white);border:1px solid var(--gray-light);border-radius:var(--radius-lg);padding:24px 20px;margin-bottom:16px;box-shadow:0 2px 12px rgba(42,122,59,.07);transition:box-shadow var(--ease);}
+.phrase-card:hover{box-shadow:0 4px 20px var(--shadow);}
+.phrase-chip{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;border-radius:99px;padding:3px 12px;margin-bottom:12px;}
+.chip-affirm{background:#d4f5dc;color:var(--green-dark);}
+.chip-neg{background:#fee2e2;color:#7f1d1d;}
+.chip-interrog{background:#fef3c7;color:#78350f;}
+.phrase-pt{font-size:18px;font-weight:800;color:var(--text-dark);margin-bottom:8px;}
+.phrase-en{font-size:22px;font-weight:900;font-family:'Montserrat',sans-serif;color:var(--green-dark);margin-bottom:14px;line-height:1.2;}
+.phrase-en span.highlight{color:var(--green-mid);text-decoration:underline;text-decoration-style:dotted;text-underline-offset:4px;}
+.audio-btn{display:flex;align-items:center;gap:8px;padding:10px 20px;background:var(--green-pale);border:2px solid var(--green-light);border-radius:99px;font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;color:var(--green-dark);cursor:pointer;transition:all var(--ease);width:fit-content;}
+.audio-btn:hover{background:var(--green-light);color:var(--white);border-color:var(--green-mid);}
+.audio-btn svg{width:18px;height:18px;flex-shrink:0;}
+.audio-btn.playing{background:var(--green);color:var(--white);border-color:var(--green);animation:audio-pulse .6s ease-in-out infinite alternate;}
+@keyframes audio-pulse{from{box-shadow:0 0 0 0 rgba(42,122,59,.5)}to{box-shadow:0 0 0 8px rgba(42,122,59,0)}}
+
+/* nav row */
+.nav-row{display:flex;gap:10px;margin-top:6px;}
+.nav-btn{flex:1;padding:13px;border:none;border-radius:var(--radius-md);font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;cursor:pointer;transition:all var(--ease);}
+.nav-btn.primary{background:linear-gradient(135deg,var(--green),var(--green-mid));color:var(--white);box-shadow:0 4px 14px var(--shadow);}
+.nav-btn.primary:hover{transform:translateY(-2px);box-shadow:0 8px 22px var(--shadow);}
+.nav-btn.outline{background:transparent;color:var(--green);border:2px solid var(--green-mid);}
+.nav-btn.outline:hover{background:var(--green-pale);}
+
+/* ── PRACTICE ── */
+.practice-card{background:var(--white);border:1px solid var(--gray-light);border-radius:var(--radius-lg);padding:26px 20px;box-shadow:0 3px 18px var(--shadow);margin-bottom:16px;text-align:center;}
+.practice-card.shake{animation:shake .3s ease;}
+.practice-card.pop{animation:pop .3s ease;}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+@keyframes pop{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
+.q-chip{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--green-mid);background:var(--green-pale);border-radius:99px;padding:3px 14px;display:inline-block;margin-bottom:14px;}
+.q-pt{font-size:20px;font-weight:800;color:var(--text-dark);margin-bottom:6px;}
+.q-en-partial{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;color:var(--green-dark);margin-bottom:18px;letter-spacing:.01em;}
+.blank{display:inline-block;min-width:60px;border-bottom:3px solid var(--green-mid);color:transparent;background:var(--green-pale);border-radius:4px;padding:0 8px;margin:0 4px;}
+.options-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px;}
+.opt-btn{padding:14px 10px;border:2px solid var(--gray-light);border-radius:var(--radius-md);background:var(--off-white);font-family:'Montserrat',sans-serif;font-size:16px;font-weight:900;color:var(--text-dark);cursor:pointer;transition:all var(--ease);}
+.opt-btn:hover:not(:disabled){border-color:var(--green-mid);background:var(--green-pale);color:var(--green-dark);transform:translateY(-2px);}
+.opt-btn.correct{background:#d4f5dc;border-color:var(--green-mid);color:var(--green-dark);box-shadow:0 0 0 3px rgba(92,194,116,.35);}
+.opt-btn.wrong{background:#fee2e2;border-color:#e24b4a;color:#7f1d1d;}
+.opt-btn:disabled{cursor:default;transform:none!important;}
+.feedback-row{min-height:32px;font-size:15px;font-weight:800;text-align:center;margin:10px 0 4px;transition:all var(--ease);}
+.feedback-row.ok{color:var(--green-dark);}
+.feedback-row.err{color:#b91c1c;}
+
+/* ── RESULT ── */
+.result-card{background:var(--white);border:1px solid var(--gray-light);border-radius:var(--radius-lg);padding:36px 24px;text-align:center;box-shadow:0 4px 24px var(--shadow);}
+.result-card h2{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;color:var(--green-dark);margin-bottom:8px;}
+.result-score{font-family:'Montserrat',sans-serif;font-size:54px;font-weight:900;color:var(--green);line-height:1;margin:14px 0;}
+.result-score span{font-size:22px;color:var(--gray);font-weight:600;}
+.star-row{font-size:30px;letter-spacing:6px;margin-bottom:16px;}
+.badge-row{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:22px;}
+.rbadge{font-size:11px;font-weight:800;padding:4px 14px;border-radius:99px;}
+.rbadge.gold{background:#fef3c7;color:#92400e;border:1px solid #fcd34d;}
+.rbadge.green{background:var(--green-pale);color:var(--green-dark);border:1px solid var(--green-light);}
+.cert-strip{background:var(--green-pale);border:1.5px solid var(--green-light);border-radius:var(--radius-md);padding:14px 18px;margin-bottom:22px;font-size:14px;color:var(--green-dark);font-weight:700;line-height:1.5;}
+.cert-strip strong{color:var(--green-dark);font-size:15px;}
+.result-actions{display:flex;gap:10px;flex-wrap:wrap;}
+
+/* ── MODULE TABS ── */
+.module-tabs{display:flex;gap:8px;margin-bottom:20px;}
+.module-tab{flex:1;padding:9px 6px;border:2px solid var(--green-light);border-radius:var(--radius-md);background:transparent;font-family:'Nunito',sans-serif;font-size:12px;font-weight:800;color:var(--green);cursor:pointer;transition:all var(--ease);}
+.module-tab.active{background:var(--green);color:var(--white);border-color:var(--green);box-shadow:0 4px 14px var(--shadow);}
+.module-tab:hover:not(.active){background:var(--green-pale);}
+
+/* ── SCORE BAR ── */
+.score-bar{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:18px;}
+.scard{background:var(--white);border:1px solid var(--gray-light);border-radius:var(--radius-md);padding:10px 8px;text-align:center;}
+.scard .sl{font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--gray);margin-bottom:3px;}
+.scard .sv{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;color:var(--green);}
+.scard.streak .sv{color:var(--gold);}
+
+/* ── FOOTER ── */
+footer{position:relative;z-index:1;text-align:center;padding:14px;font-size:11px;color:var(--gray);border-top:1px solid var(--gray-light);}
+footer strong{color:var(--green);}
+
+@media(max-width:480px){
+  .header-badge{display:none;}
+  .mascot-row{gap:10px;}
+  .mascot-wrap svg{width:72px;height:88px;}
+  .bubble-text{font-size:13px;}
+  .phrase-en{font-size:18px;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo-wrap">
+      <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 30 Q22 26 36 30 L36 14 Q22 10 8 14 Z" fill="rgba(255,255,255,.15)" stroke="#c9a227" stroke-width="1.2"/>
+        <path d="M22 27 L22 13" stroke="#c9a227" stroke-width="1"/>
+        <path d="M17 22 Q22 19 27 22" stroke="#f0cc5a" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+        <path d="M14 25 Q22 21 30 25" stroke="rgba(240,204,90,.5)" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+        <circle cx="22" cy="28" r="1.2" fill="#f0cc5a"/>
+        <path d="M22 6 L34 11 L22 16 L10 11 Z" fill="#c9a227"/>
+        <rect x="31" y="11" width="1.5" height="5" rx=".75" fill="#c9a227"/>
+        <circle cx="31.75" cy="17" r="1.5" fill="#f0cc5a"/>
+      </svg>
+    </div>
+    <div class="header-text">
+      <div class="school-name">E.M. Maria José Massena Matias · EJA</div>
+      <div class="prof-name">Prof. <span>Paulo Bispo</span></div>
+      <div class="tagline">Educar com propósito, inovar com paixão</div>
+    </div>
+    <div class="header-badge">
+      <div class="flag">🇺🇸</div>
+      <p>Verbo<br>To Be</p>
+    </div>
+  </div>
+  <div class="gov-strip">Prefeitura Municipal de Água Preta &nbsp;·&nbsp; Ensinar para Transformar Vidas</div>
+</header>
+
+<main>
+
+  <!-- ══ SCREEN: WELCOME ══ -->
+  <div class="screen active" id="screen-welcome">
+    <div class="mascot-row">
+      <div class="mascot-wrap" id="mascot-welcome">
+        <!-- pixel-art Prof. Paulo Bispo SVG -->
+        <svg viewBox="0 0 90 110" xmlns="http://www.w3.org/2000/svg">
+          <!-- Body / suit -->
+          <rect x="22" y="62" width="46" height="42" rx="6" fill="#1a5c2a"/>
+          <!-- Shirt / tie -->
+          <rect x="36" y="62" width="18" height="42" fill="#f5faf6"/>
+          <polygon points="45,68 41,80 45,78 49,80" fill="#c9a227"/>
+          <!-- Arms -->
+          <rect x="10" y="63" width="14" height="30" rx="5" fill="#1a5c2a"/>
+          <rect x="66" y="63" width="14" height="30" rx="5" fill="#1a5c2a"/>
+          <!-- Hands -->
+          <ellipse cx="17" cy="96" rx="7" ry="6" fill="#8B5E3C"/>
+          <ellipse cx="73" cy="96" rx="7" ry="6" fill="#8B5E3C"/>
+          <!-- Neck -->
+          <rect x="36" y="54" width="18" height="12" rx="4" fill="#8B5E3C"/>
+          <!-- Head -->
+          <rect x="24" y="22" width="42" height="38" rx="14" fill="#8B5E3C"/>
+          <!-- Hair -->
+          <rect x="24" y="22" width="42" height="12" rx="10" fill="#2C1810"/>
+          <rect x="24" y="28" width="6" height="10" rx="3" fill="#2C1810"/>
+          <rect x="60" y="28" width="6" height="10" rx="3" fill="#2C1810"/>
+          <!-- Eyes -->
+          <ellipse cx="37" cy="40" rx="5" ry="5" fill="white"/>
+          <ellipse cx="53" cy="40" rx="5" ry="5" fill="white"/>
+          <circle cx="37" cy="41" r="3" fill="#2C1810"/>
+          <circle cx="53" cy="41" r="3" fill="#2C1810"/>
+          <circle cx="38" cy="40" r="1" fill="white"/>
+          <circle cx="54" cy="40" r="1" fill="white"/>
+          <!-- Glasses frame -->
+          <rect x="30" y="35" width="14" height="11" rx="4" fill="none" stroke="#c9a227" stroke-width="2"/>
+          <rect x="46" y="35" width="14" height="11" rx="4" fill="none" stroke="#c9a227" stroke-width="2"/>
+          <line x1="44" y1="40" x2="46" y2="40" stroke="#c9a227" stroke-width="1.5"/>
+          <line x1="30" y1="40" x2="26" y2="39" stroke="#c9a227" stroke-width="1.5"/>
+          <line x1="60" y1="40" x2="64" y2="39" stroke="#c9a227" stroke-width="1.5"/>
+          <!-- Smile -->
+          <path d="M38 50 Q45 56 52 50" stroke="#2C1810" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <!-- Eyebrows -->
+          <path d="M31 34 Q37 31 43 34" stroke="#2C1810" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <path d="M47 34 Q53 31 59 34" stroke="#2C1810" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <!-- Cap -->
+          <rect x="20" y="16" width="50" height="8" rx="4" fill="#1a5c2a"/>
+          <rect x="36" y="8" width="18" height="10" rx="3" fill="#1a5c2a"/>
+          <circle cx="45" cy="8" r="3" fill="#c9a227"/>
+          <!-- Mustache -->
+          <path d="M39 47 Q45 51 51 47" stroke="#2C1810" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        </svg>
+        <div class="mood-badge">👋</div>
+      </div>
+      <div class="speech-bubble">
+        <div class="bubble-name">Prof. Paulo Bispo</div>
+        <div class="bubble-text" id="bubble-welcome">Seja bem-vindo(a)! Você fez a escolha mais bonita: voltar a estudar. Isso é coragem! Vamos aprender juntos!</div>
+      </div>
+    </div>
+
+    <div class="welcome-card">
+      <h2>✏️ Para começar, me conte quem é você!</h2>
+      <p>Preencha os campos abaixo com calma. Não tem pressa!</p>
+
+      <label class="field-label" for="student-name">📌 Seu nome completo</label>
+      <input class="big-input" id="student-name" type="text" placeholder="Digite seu nome aqui..." autocomplete="off"/>
+
+      <label class="field-label">📚 Em qual série você está?</label>
+      <div class="btn-group" id="group-serie">
+        <button class="sel-btn" data-group="serie" data-val="5">5º Ano</button>
+        <button class="sel-btn" data-group="serie" data-val="6">6º Ano</button>
+        <button class="sel-btn" data-group="serie" data-val="7">7º Ano</button>
+        <button class="sel-btn" data-group="serie" data-val="8">8º Ano</button>
+      </div>
+
+      <label class="field-label">🕐 Qual é o seu turno?</label>
+      <div class="btn-group" id="group-turno">
+        <button class="sel-btn" data-group="turno" data-val="Manhã">🌅 Manhã</button>
+        <button class="sel-btn" data-group="turno" data-val="Tarde">☀️ Tarde</button>
+        <button class="sel-btn" data-group="turno" data-val="Noite">🌙 Noite</button>
+      </div>
+
+      <button class="enter-btn" onclick="startLesson()">👉 Entrar na Aula!</button>
+    </div>
+  </div>
+
+  <!-- ══ SCREEN: LESSON ══ -->
+  <div class="screen" id="screen-lesson">
+    <div class="mascot-row">
+      <div class="mascot-wrap">
+        <svg viewBox="0 0 90 110" xmlns="http://www.w3.org/2000/svg">
+          <rect x="22" y="62" width="46" height="42" rx="6" fill="#1a5c2a"/>
+          <rect x="36" y="62" width="18" height="42" fill="#f5faf6"/>
+          <polygon points="45,68 41,80 45,78 49,80" fill="#c9a227"/>
+          <rect x="10" y="63" width="14" height="30" rx="5" fill="#1a5c2a"/>
+          <rect x="66" y="63" width="14" height="30" rx="5" fill="#1a5c2a"/>
+          <ellipse cx="17" cy="96" rx="7" ry="6" fill="#8B5E3C"/>
+          <ellipse cx="73" cy="96" rx="7" ry="6" fill="#8B5E3C"/>
+          <rect x="36" y="54" width="18" height="12" rx="4" fill="#8B5E3C"/>
+          <rect x="24" y="22" width="42" height="38" rx="14" fill="#8B5E3C"/>
+          <rect x="24" y="22" width="42" height="12" rx="10" fill="#2C1810"/>
+          <rect x="24" y="28" width="6" height="10" rx="3" fill="#2C1810"/>
+          <rect x="60" y="28" width="6" height="10" rx="3" fill="#2C1810"/>
+          <ellipse cx="37" cy="40" rx="5" ry="5" fill="white"/>
+          <ellipse cx="53" cy="40" rx="5" ry="5" fill="white"/>
+          <circle cx="37" cy="41" r="3" fill="#2C1810"/>
+          <circle cx="53" cy="41" r="3" fill="#2C1810"/>
+          <circle cx="38" cy="40" r="1" fill="white"/>
+          <circle cx="54" cy="40" r="1" fill="white"/>
+          <rect x="30" y="35" width="14" height="11" rx="4" fill="none" stroke="#c9a227" stroke-width="2"/>
+          <rect x="46" y="35" width="14" height="11" rx="4" fill="none" stroke="#c9a227" stroke-width="2"/>
+          <line x1="44" y1="40" x2="46" y2="40" stroke="#c9a227" stroke-width="1.5"/>
+          <line x1="30" y1="40" x2="26" y2="39" stroke="#c9a227" stroke-width="1.5"/>
+          <line x1="60" y1="40" x2="64" y2="39" stroke="#c9a227" stroke-width="1.5"/>
+          <path d="M38 50 Q45 56 52 50" stroke="#2C1810" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M31 34 Q37 31 43 34" stroke="#2C1810" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <path d="M47 34 Q53 31 59 34" stroke="#2C1810" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <rect x="20" y="16" width="50" height="8" rx="4" fill="#1a5c2a"/>
+          <rect x="36" y="8" width="18" height="10" rx="3" fill="#1a5c2a"/>
+          <circle cx="45" cy="8" r="3" fill="#c9a227"/>
+          <path d="M39 47 Q45 51 51 47" stroke="#2C1810" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        </svg>
+        <div class="mood-badge">📖</div>
+      </div>
+      <div class="speech-bubble">
+        <div class="bubble-name">Prof. Paulo Bispo</div>
+        <div class="bubble-text" id="bubble-lesson">Não tenha medo de errar! Aqui é lugar de aprender, não de se envergonhar. Leia com calma!</div>
+      </div>
+    </div>
+
+    <div class="module-tabs">
+      <button class="module-tab active" id="tab-affirm" onclick="showModule('affirm')">✅ Afirmativa</button>
+      <button class="module-tab" id="tab-neg" onclick="showModule('neg')">❌ Negativa</button>
+      <button class="module-tab" id="tab-interrog" onclick="showModule('interrog')">❓ Interrogativa</button>
+    </div>
+
+    <div class="lesson-header">
+      <div class="lesson-title" id="lesson-title">Forma Afirmativa</div>
+    </div>
+
+    <div id="lesson-cards"></div>
+
+    <div class="nav-row">
+      <button class="nav-btn outline" onclick="goTo('screen-welcome')">← Início</button>
+      <button class="nav-btn primary" onclick="startPractice()">Praticar Agora →</button>
+    </div>
+  </div>
+
+  <!-- ══ SCREEN: PRACTICE ══ -->
+  <div class="screen" id="screen-practice">
+    <div class="mascot-row">
+      <div class="mascot-wrap">
+        <svg viewBox="0 0 90 110" xmlns="http://www.w3.org/2000/svg">
+          <rect x="22" y="62" width="46" height="42" rx="6" fill="#1a5c2a"/>
+          <rect x="36" y="62" width="18" height="42" fill="#f5faf6"/>
+          <polygon points="45,68 41,80 45,78 49,80" fill="#c9a227"/>
+          <rect x="10" y="63" width="14" height="30" rx="5" fill="#1a5c2a"/>
+          <rect x="66" y="63" width="14" height="30" rx="5" fill="#1a5c2a"/>
+          <ellipse cx="17" cy="96" rx="7" ry="6" fill="#8B5E3C"/>
+          <ellipse cx="73" cy="96" rx="7" ry="6" fill="#8B5E3C"/>
+          <rect x="36" y="54" width="18" height="12" rx="4" fill="#8B5E3C"/>
+          <rect x="24" y="22" width="42" height="38" rx="14" fill="#8B5E3C"/>
+          <rect x="24" y="22" width="42" height="12" rx="10" fill="#2C1810"/>
+          <rect x="24" y="28" width="6" height="10" rx="3" fill="#2C1810"/>
+          <rect x="60" y="28" width="6" height="10" rx="3" fill="#2C1810"/>
+          <ellipse cx="37" cy="40" rx="5" ry="5" fill="white"/>
+          <ellipse cx="53" cy="40" rx="5" ry="5" fill="white"/>
+          <circle cx="37" cy="41" r="3" fill="#2C1810"/>
+          <circle cx="53" cy="41" r="3" fill="#2C1810"/>
+          <circle cx="38" cy="40" r="1" fill="white"/>
+          <circle cx="54" cy="40" r="1" fill="white"/>
+          <rect x="30" y="35" width="14" height="11" rx="4" fill="none" stroke="#c9a227" stroke-width="2"/>
+          <rect x="46" y="35" width="14" height="11" rx="4" fill="none" stroke="#c9a227" stroke-width="2"/>
+          <line x1="44" y1="40" x2="46" y2="40" stroke="#c9a227" stroke-width="1.5"/>
+          <line x1="30" y1="40" x2="26" y2="39" stroke="#c9a227" stroke-width="1.5"/>
+          <line x1="60" y1="40" x2="64" y2="39" stroke="#c9a227" stroke-width="1.5"/>
+          <path d="M38 50 Q45 56 52 50" stroke="#2C1810" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M31 34 Q37 31 43 34" stroke="#2C1810" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <path d="M47 34 Q53 31 59 34" stroke="#2C1810" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <rect x="20" y="16" width="50" height="8" rx="4" fill="#1a5c2a"/>
+          <rect x="36" y="8" width="18" height="10" rx="3" fill="#1a5c2a"/>
+          <circle cx="45" cy="8" r="3" fill="#c9a227"/>
+          <path d="M39 47 Q45 51 51 47" stroke="#2C1810" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        </svg>
+        <div class="mood-badge" id="practice-mood">💪</div>
+      </div>
+      <div class="speech-bubble">
+        <div class="bubble-name">Prof. Paulo Bispo</div>
+        <div class="bubble-text" id="bubble-practice">Respire fundo. Você sabe mais do que imagina! Cada acerto é uma porta que se abre!</div>
+      </div>
+    </div>
+
+    <div class="score-bar">
+      <div class="scard"><div class="sl">Acertos</div><div class="sv" id="p-score">0</div></div>
+      <div class="scard streak"><div class="sl">🔥 Sequência</div><div class="sv" id="p-streak">0</div></div>
+      <div class="scard"><div class="sl">Questão</div><div class="sv" id="p-qnum">1/8</div></div>
+    </div>
+
+    <div class="progress-bar"><div class="progress-fill" id="p-progress" style="width:0%"></div></div>
+
+    <div id="practice-area"></div>
+  </div>
+
+  <!-- ══ SCREEN: RESULT ══ -->
+  <div class="screen" id="screen-result">
+    <div class="mascot-row">
+      <div class="mascot-wrap">
+        <svg viewBox="0 0 90 110" xmlns="http://www.w3.org/2000/svg">
+          <rect x="22" y="62" width="46" height="42" rx="6" fill="#1a5c2a"/>
+          <rect x="36" y="62" width="18" height="42" fill="#f5faf6"/>
+          <polygon points="45,68 41,80 45,78 49,80" fill="#c9a227"/>
+          <rect x="10" y="55" width="14" height="30" rx="5" fill="#1a5c2a" transform="rotate(-20 17 70)"/>
+          <rect x="66" y="55" width="14" height="30" rx="5" fill="#1a5c2a" transform="rotate(20 73 70)"/>
+          <ellipse cx="14" cy="88" rx="7" ry="6" fill="#8B5E3C"/>
+          <ellipse cx="76" cy="88" rx="7" ry="6" fill="#8B5E3C"/>
+          <rect x="36" y="54" width="18" height="12" rx="4" fill="#8B5E3C"/>
+          <rect x="24" y="22" width="42" height="38" rx="14" fill="#8B5E3C"/>
+          <rect x="24" y="22" width="42" height="12" rx="10" fill="#2C1810"/>
+          <rect x="24" y="28" width="6" height="10" rx="3" fill="#2C1810"/>
+          <rect x="60" y="28" width="6" height="10" rx="3" fill="#2C1810"/>
+          <ellipse cx="37" cy="40" rx="5" ry="5" fill="white"/>
+          <ellipse cx="53" cy="40" rx="5" ry="5" fill="white"/>
+          <circle cx="37" cy="40" r="3" fill="#2C1810"/>
+          <circle cx="53" cy="40" r="3" fill="#2C1810"/>
+          <circle cx="38" cy="39" r="1" fill="white"/>
+          <circle cx="54" cy="39" r="1" fill="white"/>
+          <rect x="30" y="35" width="14" height="11" rx="4" fill="none" stroke="#c9a227" stroke-width="2"/>
+          <rect x="46" y="35" width="14" height="11" rx="4" fill="none" stroke="#c9a227" stroke-width="2"/>
+          <line x1="44" y1="40" x2="46" y2="40" stroke="#c9a227" stroke-width="1.5"/>
+          <line x1="30" y1="40" x2="26" y2="39" stroke="#c9a227" stroke-width="1.5"/>
+          <line x1="60" y1="40" x2="64" y2="39" stroke="#c9a227" stroke-width="1.5"/>
+          <!-- big smile -->
+          <path d="M35 49 Q45 58 55 49" stroke="#2C1810" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M31 34 Q37 31 43 34" stroke="#2C1810" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <path d="M47 34 Q53 31 59 34" stroke="#2C1810" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <rect x="20" y="16" width="50" height="8" rx="4" fill="#1a5c2a"/>
+          <rect x="36" y="8" width="18" height="10" rx="3" fill="#1a5c2a"/>
+          <circle cx="45" cy="8" r="3" fill="#c9a227"/>
+        </svg>
+        <div class="mood-badge" id="result-mood">🏆</div>
+      </div>
+      <div class="speech-bubble">
+        <div class="bubble-name">Prof. Paulo Bispo</div>
+        <div class="bubble-text" id="bubble-result">Parabéns! Você chegou até o fim! Isso não é pouco — isso é muito!</div>
+      </div>
+    </div>
+    <div class="result-card" id="result-card"></div>
+  </div>
+
+</main>
+
+<footer>
+  Desenvolvido para &nbsp;<strong>Prof. Paulo Bispo</strong>&nbsp; · E.M. Maria José Massena Matias · EJA · Água Preta – PE
+</footer>
+
+<script>
+/* ── DATA ──────────────────────────────────────────────────── */
+const DATA = {
+  5: {
+    label: "5º Ano",
+    affirm: [
+      {pt:"Eu sou estudante.",       en:"I am a student.",      verb:"am"},
+      {pt:"Você é aluno(a).",        en:"You are a student.",   verb:"are"},
+      {pt:"Ele é professor.",        en:"He is a teacher.",     verb:"is"},
+      {pt:"Ela é professora.",       en:"She is a teacher.",    verb:"is"},
+    ],
+    neg: [
+      {pt:"Eu não sou criança.",     en:"I am not a child.",    verb:"am not"},
+      {pt:"Você não é velho(a).",    en:"You are not old.",     verb:"are not"},
+    ],
+    interrog: [
+      {pt:"Você é estudante?",       en:"Are you a student?",   verb:"Are"},
+      {pt:"Ele é professor?",        en:"Is he a teacher?",     verb:"Is"},
+    ],
+  },
+  6: {
+    label: "6º Ano",
+    affirm: [
+      {pt:"Eu sou brasileiro(a).",   en:"I am Brazilian.",      verb:"am"},
+      {pt:"Ele é aposentado.",       en:"He is retired.",       verb:"is"},
+      {pt:"Ela é dona de casa.",     en:"She is a housewife.",  verb:"is"},
+      {pt:"Você é corajoso(a).",     en:"You are brave.",       verb:"are"},
+    ],
+    neg: [
+      {pt:"Eu não sou jovem.",       en:"I am not young.",      verb:"am not"},
+      {pt:"Ele não é médico.",       en:"He is not a doctor.",  verb:"is not"},
+    ],
+    interrog: [
+      {pt:"Ela é casada?",           en:"Is she married?",      verb:"Is"},
+      {pt:"Você é brasileiro?",      en:"Are you Brazilian?",   verb:"Are"},
+    ],
+  },
+  7: {
+    label: "7º Ano",
+    affirm: [
+      {pt:"Nós somos brasileiros.",  en:"We are Brazilian.",    verb:"are"},
+      {pt:"Eles são alunos.",        en:"They are students.",   verb:"are"},
+      {pt:"Eu sou trabalhador(a).",  en:"I am a worker.",       verb:"am"},
+      {pt:"Você é inteligente.",     en:"You are intelligent.", verb:"are"},
+    ],
+    neg: [
+      {pt:"Nós não somos ricos.",    en:"We are not rich.",     verb:"are not"},
+      {pt:"Eles não são preguiçosos.",en:"They are not lazy.",  verb:"are not"},
+      {pt:"Ela não é nova aqui.",    en:"She is not new here.", verb:"is not"},
+    ],
+    interrog: [
+      {pt:"Nós somos livres?",       en:"Are we free?",         verb:"Are"},
+      {pt:"Eles são amigos?",        en:"Are they friends?",    verb:"Are"},
+      {pt:"Ela é feliz?",            en:"Is she happy?",        verb:"Is"},
+    ],
+  },
+  8: {
+    label: "8º Ano",
+    affirm: [
+      {pt:"Eu sou capaz.",           en:"I am capable.",        verb:"am"},
+      {pt:"Nós somos fortes.",       en:"We are strong.",       verb:"are"},
+      {pt:"Ela é determinada.",      en:"She is determined.",   verb:"is"},
+      {pt:"Você é especial.",        en:"You are special.",     verb:"are"},
+    ],
+    neg: [
+      {pt:"Eu não estou cansado(a).",en:"I am not tired.",      verb:"am not"},
+      {pt:"Nós não somos fracos.",   en:"We are not weak.",     verb:"are not"},
+      {pt:"Ele não está errado.",    en:"He is not wrong.",     verb:"is not"},
+    ],
+    interrog: [
+      {pt:"Você está pronto(a)?",    en:"Are you ready?",       verb:"Are"},
+      {pt:"Eles estão bem?",         en:"Are they okay?",       verb:"Are"},
+      {pt:"Ela é sua professora?",   en:"Is she your teacher?", verb:"Is"},
+    ],
+  },
+};
+
+const MODULE_LABELS = {affirm:"Forma Afirmativa", neg:"Forma Negativa", interrog:"Forma Interrogativa"};
+const MODULE_CHIPS  = {affirm:"chip-affirm", neg:"chip-neg", interrog:"chip-interrog"};
+const MODULE_CHIP_LABELS = {affirm:"✅ Afirmativa", neg:"❌ Negativa", interrog:"❓ Interrogativa"};
+
+/* ── STATE ─────────────────────────────────────────────────── */
+let ST = {
+  name:"", serie:null, turno:"",
+  module:"affirm",
+  pQuestions:[], pCurrent:0, pScore:0, pStreak:0, pBest:0,
+  pAnswered:null, pChosen:null,
+};
+
+/* ── MASCOT MESSAGES ────────────────────────────────────────── */
+const MSGS = {
+  correct: n => [
+    `Isso aí, ${n}! Sabia que você conseguia!`,
+    `Que orgulho, ${n}! Continue assim, você está voando!`,
+    `Perfeito! Cada acerto é uma porta que se abre!`,
+    `Muito bem, ${n}! Você está crescendo!`,
+  ],
+  wrong: n => [
+    `Não desanime, ${n}! Errar faz parte. Veja a resposta e tente de novo!`,
+    `Quase lá! Paulo Freire dizia: ninguém aprende sozinho. Vamos juntos!`,
+    `Olha a resposta certa, ${n}. Agora você nunca mais esquece!`,
+    `Tente de novo! A persistência é o segredo dos vencedores!`,
+  ],
+  streak: n => [
+    `${n}, você está em chamas! Que sequência incrível! 🔥`,
+    `Olha só! ${n} não para mais! Isso é dedicação pura!`,
+  ],
+  idle: n => [
+    `Está com dúvida? Fique tranquilo(a), ${n}. Leia com calma, não há pressa!`,
+    `Respire fundo. Você sabe mais do que imagina, ${n}!`,
+  ],
+  finish: {
+    10: n=>`${n}, nota 10! O maior prêmio não é a nota — é saber que você não desistiu!`,
+    8:  n=>`${n}, excelente! Sua família vai se orgulhar muito de você. Eu já me orgulho!`,
+    6:  n=>`Muito bom, ${n}! Você está avançando. Cada palavra aprendida é uma vitória!`,
+    4:  n=>`Bom esforço, ${n}! Não desista. Cada aula é um passo na sua história!`,
+    0:  n=>`${n}, você veio até aqui — isso já é coragem! Vamos tentar de novo juntos!`,
+  },
+};
+
+function rndMsg(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+function finishMsg(score, n){
+  if(score>=10) return MSGS.finish[10](n);
+  if(score>=8)  return MSGS.finish[8](n);
+  if(score>=6)  return MSGS.finish[6](n);
+  if(score>=4)  return MSGS.finish[4](n);
+  return MSGS.finish[0](n);
+}
+
+/* ── SPEECH ─────────────────────────────────────────────────── */
+function speak(text){
+  if(!window.speechSynthesis) return;
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'en-US';
+  u.rate = 0.82;
+  u.pitch = 1;
+  speechSynthesis.speak(u);
+}
+
+function playAudio(btn, text){
+  if(!window.speechSynthesis){ alert('Seu navegador não suporta áudio. Tente no Chrome ou Edge!'); return; }
+  speechSynthesis.cancel();
+  btn.classList.add('playing');
+  btn.innerHTML = audioIcon()+'Ouvindo...';
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang='en-US'; u.rate=0.78; u.pitch=1;
+  u.onend = ()=>{ btn.classList.remove('playing'); btn.innerHTML=audioIcon()+' Ouvir em inglês 🔊'; };
+  u.onerror = ()=>{ btn.classList.remove('playing'); btn.innerHTML=audioIcon()+' Ouvir em inglês 🔊'; };
+  speechSynthesis.speak(u);
+}
+
+function audioIcon(){
+  return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>`;
+}
+
+/* ── SCREEN NAV ─────────────────────────────────────────────── */
+function goTo(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ── WELCOME → LESSON ───────────────────────────────────────── */
+function startLesson(){
+  const name = document.getElementById('student-name').value.trim();
+  if(!name){ alert('Por favor, escreva seu nome!'); return; }
+  if(!ST.serie){ alert('Escolha a sua série!'); return; }
+  if(!ST.turno){ alert('Escolha o seu turno!'); return; }
+  ST.name = name;
+  document.getElementById('bubble-lesson').textContent =
+    `Olá, ${name}! Não tenha medo de errar. Aqui é lugar de aprender, não de se envergonhar. Leia com calma!`;
+  showModule('affirm');
+  goTo('screen-lesson');
+}
+
+/* ── LESSON MODULE ──────────────────────────────────────────── */
+function showModule(mod){
+  ST.module = mod;
+  ['affirm','neg','interrog'].forEach(m=>{
+    document.getElementById('tab-'+m).classList.toggle('active', m===mod);
+  });
+  document.getElementById('lesson-title').textContent = MODULE_LABELS[mod];
+  const phrases = DATA[ST.serie][mod];
+  const container = document.getElementById('lesson-cards');
+  container.innerHTML = phrases.map(p=>`
+    <div class="phrase-card">
+      <span class="phrase-chip ${MODULE_CHIPS[mod]}">${MODULE_CHIP_LABELS[mod]}</span>
+      <div class="phrase-pt">🇧🇷 ${p.pt}</div>
+      <div class="phrase-en">🇺🇸 ${highlightVerb(p.en, p.verb)}</div>
+      <button class="audio-btn" onclick="playAudio(this,'${p.en.replace(/'/g,"\\'")}')">
+        ${audioIcon()} Ouvir em inglês 🔊
+      </button>
+    </div>
+  `).join('');
+}
+
+function highlightVerb(en, verb){
+  return en.replace(verb, `<span class="highlight">${verb}</span>`);
+}
+
+/* ── PRACTICE ───────────────────────────────────────────────── */
+function shuffle(a){ const r=[...a]; for(let i=r.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]];} return r; }
+
+function buildPracticeQs(){
+  const d = DATA[ST.serie];
+  const all = [...d.affirm,...d.neg,...d.interrog];
+  const VERBS_POOL = ['am','is','are','am not','is not','are not','Are','Is'];
+  return shuffle(all).slice(0,8).map(p=>{
+    const correct = p.verb;
+    const wrong = shuffle(VERBS_POOL.filter(v=>v!==correct)).slice(0,3);
+    return { pt:p.pt, en:p.en, verb:correct, options: shuffle([correct,...wrong]) };
+  });
+}
+
+function startPractice(){
+  ST.pQuestions = buildPracticeQs();
+  ST.pCurrent=0; ST.pScore=0; ST.pStreak=0; ST.pBest=0;
+  ST.pAnswered=null; ST.pChosen=null;
+  document.getElementById('bubble-practice').textContent =
+    `Respire fundo, ${ST.name}. Você sabe mais do que imagina! Cada acerto é uma porta que se abre!`;
+  renderPractice();
+  goTo('screen-practice');
+}
+
+function renderPractice(){
+  const q = ST.pQuestions[ST.pCurrent];
+  const total = ST.pQuestions.length;
+  const pct = Math.round(((ST.pCurrent+(ST.pAnswered!==null?1:0))/total)*100);
+  document.getElementById('p-score').textContent  = ST.pScore;
+  document.getElementById('p-streak').textContent = ST.pStreak;
+  document.getElementById('p-qnum').textContent   = (ST.pCurrent+1)+'/'+total;
+  document.getElementById('p-progress').style.width = pct+'%';
+
+  // partial sentence with blank
+  const partial = q.en.replace(q.verb, `<span class="blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>`);
+
+  const opts = q.options.map(o=>{
+    let cls='opt-btn';
+    let dis='';
+    if(ST.pAnswered!==null){
+      dis='disabled';
+      if(o===q.verb) cls+=' correct';
+      else if(o===ST.pChosen) cls+=' wrong';
+    }
+    return `<button class="${cls}" ${dis} onclick="answerPractice('${o}')">${o}</button>`;
+  }).join('');
+
+  const feedback = ST.pAnswered===null ? '' :
+    `<div class="feedback-row ${ST.pAnswered?'ok':'err'}">
+      ${ST.pAnswered?`✓ Muito bem! A resposta é: <strong>${q.verb}</strong>`:`✗ A resposta certa é: <strong>${q.verb}</strong>`}
+    </div>`;
+
+  const nextBtn = ST.pAnswered!==null ?
+    `<div class="nav-row"><button class="nav-btn primary" onclick="nextPractice()">${ST.pCurrent+1>=total?'📊 Ver meu resultado':'Próxima →'}</button></div>` : '';
+
+  document.getElementById('practice-area').innerHTML = `
+    <div class="practice-card" id="pcard">
+      <div class="q-chip">Complete a frase em inglês</div>
+      <div class="q-pt">🇧🇷 ${q.pt}</div>
+      <div class="q-en-partial">🇺🇸 ${partial}</div>
+      <div class="options-grid">${opts}</div>
+    </div>
+    ${feedback}
+    ${nextBtn}
+  `;
+}
+
+function answerPractice(chosen){
+  if(ST.pAnswered!==null) return;
+  const q = ST.pQuestions[ST.pCurrent];
+  const ok = chosen===q.verb;
+  ST.pAnswered=ok; ST.pChosen=chosen;
+  if(ok){ ST.pScore++; ST.pStreak++; if(ST.pStreak>ST.pBest) ST.pBest=ST.pStreak; }
+  else   { ST.pStreak=0; }
+
+  // animate card
+  const card = document.getElementById('pcard');
+  if(card){ card.classList.add(ok?'pop':'shake'); setTimeout(()=>card.classList.remove('pop','shake'),350); }
+
+  // mascot msg
+  const n = ST.name;
+  let msg = '';
+  if(ok && ST.pStreak>=3) msg = rndMsg(MSGS.streak(n));
+  else if(ok)             msg = rndMsg(MSGS.correct(n));
+  else                    msg = rndMsg(MSGS.wrong(n));
+  document.getElementById('bubble-practice').textContent = msg;
+  document.getElementById('practice-mood').textContent = ok?(ST.pStreak>=3?'🔥':'✅'):'💪';
+
+  renderPractice();
+}
+
+function nextPractice(){
+  if(ST.pCurrent+1>=ST.pQuestions.length){ showResult(); return; }
+  ST.pCurrent++; ST.pAnswered=null; ST.pChosen=null;
+  document.getElementById('bubble-practice').textContent =
+    rndMsg(ST.pStreak>=2 ? MSGS.streak(ST.name) : MSGS.idle(ST.name));
+  renderPractice();
+}
+
+/* ── RESULT ─────────────────────────────────────────────────── */
+function stars(s,t){ const pct=s/t; if(pct===1)return'⭐⭐⭐'; if(pct>=.7)return'⭐⭐'; if(pct>=.4)return'⭐'; return''; }
+function buildBadges(s,t){
+  const b=[];
+  if(s===t) b.push({c:'gold',l:'Nota 10 ⭐'});
+  if(s/t>=.7) b.push({c:'green',l:'Aprovado ✓'});
+  if(ST.pBest>=3) b.push({c:'gold',l:'Sequência '+ST.pBest+'x 🔥'});
+  b.push({c:'green',l:DATA[ST.serie].label});
+  b.push({c:'green',l:ST.turno});
+  return b.map(x=>`<span class="rbadge ${x.c}">${x.l}</span>`).join('');
+}
+
+function showResult(){
+  const s = ST.pScore, t = ST.pQuestions.length, n = ST.name;
+  const msg = finishMsg(Math.round((s/t)*10), n);
+  document.getElementById('bubble-result').textContent = msg;
+  document.getElementById('result-mood').textContent = s===t?'🏆':s/t>=.7?'🎉':'📚';
+
+  document.getElementById('result-card').innerHTML = `
+    <h2>${s===t?'Perfeito!':s/t>=.7?'Muito bem!':s/t>=.4?'Bom esforço!':'Continue firme!'}</h2>
+    <div class="result-score">${s}<span>/${t}</span></div>
+    <div class="star-row">${stars(s,t)||'📚'}</div>
+    <div class="badge-row">${buildBadges(s,t)}</div>
+    <div class="cert-strip">
+      📜 <strong>${n}</strong> participou da aula de <strong>Verbo To Be</strong><br>
+      ${DATA[ST.serie].label} · Turno: ${ST.turno} · E.M. Maria José Massena Matias · EJA
+    </div>
+    <div class="result-actions">
+      <button class="nav-btn primary" onclick="startPractice()">🔄 Praticar de novo</button>
+      <button class="nav-btn outline" onclick="goTo('screen-lesson')">📖 Rever a aula</button>
+    </div>
+  `;
+  goTo('screen-result');
+}
+
+/* ── UI HELPERS ─────────────────────────────────────────────── */
+document.querySelectorAll('.sel-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const g = btn.dataset.group;
+    document.querySelectorAll(`.sel-btn[data-group="${g}"]`).forEach(b=>b.classList.remove('selected'));
+    btn.classList.add('selected');
+    if(g==='serie') ST.serie = parseInt(btn.dataset.val);
+    if(g==='turno') ST.turno = btn.dataset.val;
+  });
+});
+
+// idle message timer
+let idleTimer;
+function resetIdle(){
+  clearTimeout(idleTimer);
+  idleTimer = setTimeout(()=>{
+    if(ST.name && document.getElementById('screen-practice').classList.contains('active')){
+      document.getElementById('bubble-practice').textContent = rndMsg(MSGS.idle(ST.name));
+    }
+  }, 18000);
+}
+document.addEventListener('click', resetIdle);
+document.addEventListener('keydown', resetIdle);
+</script>
+</body>
+</html>
